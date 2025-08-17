@@ -50,4 +50,44 @@ window.addEventListener('DOMContentLoaded', event => {
             }
         });
     });
+
+  const videoPath = "../assets/vid/";  // adjust if needed
+  const videos = ["mayden.mp4", "ground_cam_1.mp4", "plane_cam_1.mp4"];
+
+  let index = 0;
+  let current = 0; // which video element is active
+
+  const videoElements = [
+    document.getElementById("video1"),
+    document.getElementById("video2")
+  ];
+
+  // --- Play first video ---
+  videoElements[current].src = videoPath + videos[index];
+  videoElements[current].classList.add("active");
+  videoElements[current].play();
+
+  function playNextVideo() {
+    const next = (current + 1) % 2;         // the hidden video element
+    index = (index + 1) % videos.length;    // next clip
+
+    videoElements[next].src = videoPath + videos[index];
+
+    videoElements[next].onloadeddata = () => {
+      videoElements[next].play();
+
+      // Crossfade: hide current, show next
+      videoElements[current].classList.remove("active");
+      videoElements[next].classList.add("active");
+
+      current = next; // update pointer
+
+      // When this video ends, call again
+      videoElements[current].onended = playNextVideo;
+    };
+  }
+
+  // Start loop
+  videoElements[current].onended = playNextVideo;
+
 });
