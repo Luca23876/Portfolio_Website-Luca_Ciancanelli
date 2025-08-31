@@ -50,44 +50,63 @@ window.addEventListener('DOMContentLoaded', event => {
             }
         });
     });
+});
 
-  const videoPath = "../assets/vid/";  // adjust if needed
-  const videos = ["mayden.mp4", "ground_cam_1.mp4", "plane_cam_1.mp4", "landing_1.mp4"];
+// Project landing page video slideshow
+const videoPath = "../assets/vid/";
+const videos = ["mayden.mp4", "ground_cam_1.mp4", "plane_cam_1.mp4", "landing_1.mp4"];
 
-  let index = 0;
-  let current = 0; // which video element is active
+let index = 0;
+let current = 0;
 
-  const videoElements = [
+const videoElements = [
     document.getElementById("video1"),
     document.getElementById("video2")
-  ];
+];
 
-  // --- Play first video ---
-  videoElements[current].src = videoPath + videos[index];
-  videoElements[current].classList.add("active");
-  videoElements[current].play();
+videoElements[current].src = videoPath + videos[index];
+videoElements[current].classList.add("active");
+videoElements[current].play();
 
-  function playNextVideo() {
-    const next = (current + 1) % 2;         // the hidden video element
-    index = (index + 1) % videos.length;    // next clip
+function playNextVideo() {
+    const next = (current + 1) % 2;
+    index = (index + 1) % videos.length;
 
     videoElements[next].src = videoPath + videos[index];
 
     videoElements[next].onloadeddata = () => {
-      videoElements[next].play();
+    videoElements[next].play();
 
-      // Crossfade: hide current, show next
-      videoElements[current].classList.remove("active");
-      videoElements[next].classList.add("active");
+    videoElements[current].classList.remove("active");
+    videoElements[next].classList.add("active");
 
-      current = next; // update pointer
+    current = next;
 
-      // When this video ends, call again
-      videoElements[current].onended = playNextVideo;
+    videoElements[current].onended = playNextVideo;
     };
-  }
+}
 
-  // Start loop
-  videoElements[current].onended = playNextVideo;
+videoElements[current].onended = playNextVideo;
 
-});
+// Project overview photo slidewhow 
+let slideIndex = 1;
+showSlides(slideIndex);
+
+function plusSlides(n) {
+    showSlides(slideIndex += n);
+}
+
+function currentSlide(n) {
+    showSlides(slideIndex = n);
+}
+
+function showSlides(n) {
+    let i;
+    let slides = document.getElementsByClassName("mySlides");
+    if (n > slides.length) {slideIndex = 1}
+    if (n < 1) {slideIndex = slides.length}
+    for (i = 0; i < slides.length; i++) {
+        slides[i].style.display = "none";
+    }
+    slides[slideIndex-1].style.display = "block";
+}

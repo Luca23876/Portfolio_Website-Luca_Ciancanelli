@@ -32,55 +32,68 @@
 
     <!-- Project Header-->
     <header class="video-header">
-    <div class="video-container">
-        <video id="video1" autoplay muted playsinline></video>
-        <video id="video2" autoplay muted playsinline></video>
+        <div class="video-container">
+            <video id="video1" autoplay muted playsinline></video>
+            <video id="video2" autoplay muted playsinline></video>
             <div class="header-overlay">
                 <h1 class="text-white font-weight-bold">3D Printed Test UAV</h1>
                 <p>Pushing the Bounds of Additive Manufacturing for UAVs</p>
             </div>
-    </div>
+        </div>
     </header>
 
-    <!-- Project Details Section-->
-    <section class="page-section bg-primary h-100" id="project-details">
-        <div class="container px-4 px-lg-5">
-            <div class="row gx-4 gx-lg-5 justify-content-center">
-                <div class="col-lg-8">
-                    <h2 class="text-white mb-4">Project Overview</h2>
+    <!-- Project Overview Section -->
+    <section class="page-section bg-dark text-white" id="project-details">
+        <div class="container-fluid h-100 d-flex align-items-center">
+            <div class="row w-100 align-items-center justify-content-center">
+                <div class="col-lg-6 col-md-10 p-4">
+                    <h2 class="mb-4">Project Overview</h2>
                     <p class="text-white-50">
-                        This UAV was developed to test additive manufacturing techniques for UAVs and to refine the my UAV design process.
-                        Utilizing Open Vehicle Sketch Platform an iterative design process was followed to design an airframe to meet a set 
-                        of aircraft performance requirements. Once the performance requirements were met, Autodesk Fusion 360 was used to 
-                        model parts, subassemblies, and the complete airframe assembly. With the airframe designed, 3D printed parts were manufactured
-                        using a Bambu P1S 3D printer and off the shelf components were purchased through RC parts distributors. Finally the airframe
-                        was assembled, final build specs were verified (total mass, center of mass, etc.), and the airframe was tested at a model airfield.
+                    This UAV was developed to test additive manufacturing techniques for UAVs and to refine my UAV design process.
+                    Utilizing Open Vehicle Sketch Platform, an iterative design process was followed to design an airframe to meet 
+                    a set of aircraft performance requirements. Once the performance requirements were met, Autodesk Fusion 360 was used 
+                    to model parts, subassemblies, and the complete airframe assembly. With the airframe designed, 3D printed parts were manufactured
+                    using a Bambu P1S 3D printer and off-the-shelf components were purchased through RC parts distributors. Finally, the airframe
+                    was assembled, final build specs were verified (total mass, center of mass, etc.), and the airframe was tested at a model airfield.
                     </p>
                 </div>
-                <div class="col-lg-8">
-                    <img class="img-fluid img-round shadow-lg" src="../assets/img/pics/3D_Printed_Plane_CAD_Render.png" alt="CAD_Render"/>
+
+                <div class="slideshow-container col-lg-6 col-md-10">
+                    <div class="mySlides fade_ss">
+                        <div class="numbertext">1 / 2</div>
+                        <img src="../assets/img/3d_printed_plane/Complete_Assembly.png" class="img-round" style="width:100%">
+                    </div>
+
+                    <div class="mySlides fade_ss">
+                        <div class="numbertext">2 / 2</div>
+                        <img src="../assets/img/3d_printed_plane/Complete_Assembly_No_Skin.png" class="img-round" style="width:100%">
+                    </div>
+
+                    <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+                    <a class="next" onclick="plusSlides(1)">&#10095;</a>
+                </div>
+                <br>
                 </div>
             </div>
+        </div>
     </section>
 
-    <!-- Specs Section-->
-    <section class="projects-section bg-light" id="project-specs">
-        <div class="container px-4 px-lg-5">
-            <div class="row gx-0 mb-4 mb-lg-5 align-items-center">
-                <div class="col-xl-8 col-lg-7">
-                    <img class="img-fluid mb-3 mb-lg-0" src="../assets/img/portfolio/thumbnails/Flight_Controller.jpg" alt="Component" style="max-width: 300px;"/>
+    <!-- Specs Section -->
+    <section id="specs" class="py-5 bg-light">
+        <div class="container">
+            <h2 class="text-center mb-5 text-white-100">Key Specifications</h2>
+            <div class="row text-center">
+                <div class="col-md-4 mb-4">
+                    <h4 class="text-white-100">Wingspan</h4>
+                    <p class="text-white-50">1500 mm</p>
                 </div>
-                <div class="col-xl-4 col-lg-5">
-                    <div class="featured-text text-center text-lg-left">
-                        <h4>Specifications</h4>
-                        <ul class="list-unstyled mb-0">
-                            <li>Wingspan: 1.2m</li>
-                            <li>Weight: 850g</li>
-                            <li>Motor: 2200KV brushless</li>
-                            <li>Battery: 3S LiPo</li>
-                            <li>Flight Controller: Custom PCB</li>
-                        </ul>
-                    </div>
+                <div class="col-md-4 mb-4">
+                    <h4 class="text-white-100">Airframe Mass</h4>
+                    <p class="text-white-50">2.171 kg</p>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <h4 class="text-white-100">Cruise Speed</h4>
+                    <p class="text-white-50">17.03 m/s (38.10 mph)</p>
                 </div>
             </div>
         </div>

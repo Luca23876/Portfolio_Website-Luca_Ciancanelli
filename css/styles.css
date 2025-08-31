@@ -48,7 +48,7 @@
   --bs-info-rgb: 13, 202, 240;
   --bs-warning-rgb: 255, 193, 7;
   --bs-danger-rgb: 220, 53, 69;
-  --bs-light-rgb: 248, 249, 250;
+  --bs-light-rgb: 71, 76, 82;
   --bs-dark-rgb: 33, 37, 41;
   --bs-white-rgb: 255, 255, 255;
   --bs-black-rgb: 0, 0, 0;
@@ -6691,7 +6691,7 @@ textarea.form-control-lg {
 
 .text-bg-light {
   color: #000 !important;
-  background-color: RGBA(248, 249, 250, var(--bs-bg-opacity, 1)) !important;
+  background-color: RGBA(48, 249, 250, var(--bs-bg-opacity, 1)) !important;
 }
 
 .text-bg-dark {
@@ -8107,6 +8107,12 @@ textarea.form-control-lg {
   --bs-text-opacity: 1;
   color: rgba(255, 255, 255, 0.5) !important;
 }
+
+.text-white-100 {
+  --bs-text-opacity: 1;
+  color: rgba(255, 255, 255, 1) !important;
+}
+
 
 .text-reset {
   --bs-text-opacity: 1;
@@ -11000,7 +11006,7 @@ header.masthead h1, header.masthead .h1 {
 
 .video-header {
   position: relative;
-  height: 100vh; /* adjust as needed */
+  height: 100vh;
   width: 100%;
   overflow: hidden;
   background: black;
@@ -11020,8 +11026,8 @@ header.masthead h1, header.masthead .h1 {
   min-height: 100%;
   object-fit: cover;
   transform: translate(-50%, -50%);
-  opacity: 0;                         /* start hidden */
-  transition: opacity 1s ease-in-out;  /* fade duration */
+  opacity: 0;
+  transition: opacity 1s ease-in-out;
   z-index: 0;
 }
 
@@ -11036,4 +11042,101 @@ header.masthead h1, header.masthead .h1 {
   color: white;
   top: 50%;
   transform: translateY(-50%);
+}
+
+#project-details {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#project-details img {
+  max-height: 80vh;
+  object-fit: contain;
+}
+
+#project-overview {
+  min-height: 100vh;
+}
+
+#project-overview .overview-image img {
+  object-fit: cover;
+  height: 100%;
+}
+
+section {
+  scroll-margin-top: 70px;
+}
+
+img.rounded.shadow {
+  transition: transform 0.3s ease;
+}
+img.rounded.shadow:hover {
+  transform: scale(1.02);
+}
+
+* {box-sizing:border-box}
+
+.slideshow-container {
+  max-width: 1000px;
+  position: relative;
+  margin: auto;
+}
+
+.mySlides {
+  display: none;
+}
+
+.prev, .next {
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  width: auto;
+  margin-top: -22px;
+  padding: 16px;
+  color: white;
+  font-weight: bold;
+  font-size: 18px;
+  transition: 0.6s ease;
+  border-radius: 0 3px 3px 0;
+  user-select: none;
+}
+
+.next {
+  right: 12px;
+  border-radius: 3px 0 0 3px;
+}
+
+.prev:hover, .next:hover {
+  background-color: rgba(0,0,0,0.8);
+}
+
+.text_ss {
+  --bs-text-opacity: 1;
+  color: rgba(255, 255, 255, 0.5) !important;
+  font-size: 15px;
+  padding: 8px 12px;
+  position: absolute;
+  bottom: 8px;
+  width: 100%;
+  text-align: center;
+}
+
+.numbertext {
+  color: #f2f2f2;
+  font-size: 12px;
+  padding: 8px 12px;
+  position: absolute;
+  top: 0;
+}
+
+.fade_ss {
+  animation-name: fade;
+  animation-duration: 1.5s;
+}
+
+@keyframes fade {
+  from {opacity: .4}
+  to {opacity: 1}
 }
