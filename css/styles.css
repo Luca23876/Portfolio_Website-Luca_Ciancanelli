@@ -11066,7 +11066,7 @@ header.masthead h1, header.masthead .h1 {
 }
 
 section {
-  scroll-margin-top: 70px;
+  scroll-margin-top: 0px;
 }
 
 img.rounded.shadow {

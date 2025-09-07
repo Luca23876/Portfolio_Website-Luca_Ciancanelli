@@ -53,7 +53,7 @@ window.addEventListener('DOMContentLoaded', event => {
 });
 
 // Project landing page video slideshow
-const videoPath = "../assets/vid/";
+const videoPath = "../assets/vid/3d_printed_plane/";
 const videos = ["mayden.mp4", "ground_cam_1.mp4", "plane_cam_1.mp4", "landing_1.mp4"];
 
 let index = 0;
