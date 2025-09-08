@@ -53,60 +53,71 @@ window.addEventListener('DOMContentLoaded', event => {
 });
 
 // Project landing page video slideshow
-const videoPath = "../assets/vid/3d_printed_plane/";
-const videos = ["mayden.mp4", "ground_cam_1.mp4", "plane_cam_1.mp4", "landing_1.mp4"];
+class landing_page_slideshow {
+    constructor(vid_path, vids, vid_id_1, vid_id_2) {
+        this.vid_path = vid_path;
+        this.vids = vids;
+        this.index = 0;
+        this.current = 0;
+        this.video_elements = [document.getElementById(vid_id_1), document.getElementById(vid_id_2)];
 
-let index = 0;
-let current = 0;
-
-const videoElements = [
-    document.getElementById("video1"),
-    document.getElementById("video2")
-];
-
-videoElements[current].src = videoPath + videos[index];
-videoElements[current].classList.add("active");
-videoElements[current].play();
-
-function playNextVideo() {
-    const next = (current + 1) % 2;
-    index = (index + 1) % videos.length;
-
-    videoElements[next].src = videoPath + videos[index];
-
-    videoElements[next].onloadeddata = () => {
-    videoElements[next].play();
-
-    videoElements[current].classList.remove("active");
-    videoElements[next].classList.add("active");
-
-    current = next;
-
-    videoElements[current].onended = playNextVideo;
-    };
-}
-
-videoElements[current].onended = playNextVideo;
-
-// Project overview photo slidewhow 
-let slideIndex = 1;
-showSlides(slideIndex);
-
-function plusSlides(n) {
-    showSlides(slideIndex += n);
-}
-
-function currentSlide(n) {
-    showSlides(slideIndex = n);
-}
-
-function showSlides(n) {
-    let i;
-    let slides = document.getElementsByClassName("mySlides");
-    if (n > slides.length) {slideIndex = 1}
-    if (n < 1) {slideIndex = slides.length}
-    for (i = 0; i < slides.length; i++) {
-        slides[i].style.display = "none";
+        this.video_elements[this.current].src = this.vid_path + this.vids[this.index];
+        this.video_elements[this.current].classList.add("active");
+        this.video_elements[this.current].play();
     }
-    slides[slideIndex-1].style.display = "block";
+
+    // Play next video
+    play_next_video() {
+        const next = (this.current + 1) % 2;
+        this.index = (this.index + 1) % this.vids.length;
+
+        this.video_elements[next].src = this.vid_path + this.vids[this.index];
+
+        this.video_elements[next].onloadeddata = () => {
+            this.video_elements[next].play();
+
+            this.video_elements[this.current].classList.remove("active");
+            this.video_elements[next].classList.add("active");
+
+            this.current = next;
+        };
+    }
 }
+
+// Project overview photo slideshow 
+class photo_slideshow {
+    constructor(id) {
+        this.slide_index = 1;
+        this.element_id = id;
+
+        this.show_slides(this.slideIndex)
+    }
+
+    // Advance slides
+    plus_slides(n) {
+        this.show_slides(this.slide_index += n);
+    }
+
+    // Set current slide
+    current_slide(n) {
+        this.show_slides(this.slide_index = n);
+    }
+    
+    // Display current slide
+    show_slides(n) {
+        let i;
+        let slides = document.getElementsByClassName(this.element_id);
+        if (n > slides.length) {this.slide_index = 1}
+        if (n < 1) {this.slide_index = slides.length}
+        for (i = 0; i < slides.length; i++) {
+            slides[i].style.display = "none";
+        }
+        slides[this.slide_index - 1].style.display = "block";
+    }
+}
+
+// Landing page objects
+const plane_3d_printed_lp = new landing_page_slideshow("../assets/vid/3d_printed_plane/", ["mayden.mp4", "ground_cam_1.mp4", "plane_cam_1.mp4", "landing_1.mp4"], "plane_3d_printed_vid_1", "plane_3d_printed_vid_2");
+
+// Slide show objects
+const plane_3d_printed_overview_ss = new photo_slideshow("plane_3d_printed_ss")
