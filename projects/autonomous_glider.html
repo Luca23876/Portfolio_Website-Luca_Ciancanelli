@@ -33,8 +33,8 @@
     <!-- Project Header-->
     <header class="video-header">
         <div class="video-container">
-            <video id="autonomous_uav_vid_1" onended="plane_3d_printed_lp.play_next_video()" autoplay muted playsinline></video>
-            <video id="autonomous_uav_vid_2" onended="plane_3d_printed_lp.play_next_video()" autoplay muted playsinline></video>
+            <video id="autonomous_uav_vid_1" onended="autonomous_glider_lp.play_next_video()" autoplay muted playsinline></video>
+            <video id="autonomous_uav_vid_2" onended="autonomous_glider_lp.play_next_video()" autoplay muted playsinline></video>
             <div class="header-overlay">
                 <h1 class="text-white font-weight-bold">X-1 Autonomous Glider UAV</h1>
                 <p>AIAA Design Build Fly Competition Autonomous Glider</p>
@@ -300,5 +300,7 @@
 
     <!-- Core theme JS-->
     <script src="../js/scripts.js"></script>
+
+    <script>const autonomous_glider_lp = new landing_page_slideshow("../assets/vid/autonomous_glider/", ["mothership_takeoff.mp4", "deployment_plane_cam.mp4", "deployment_ground_cam.mp4"], "autonomous_uav_vid_1", "autonomous_uav_vid_2");</script>
 </body>
 </html>

@@ -115,9 +115,3 @@ class photo_slideshow {
         slides[this.slide_index - 1].style.display = "block";
     }
 }
-
-// Landing page objects
-const plane_3d_printed_lp = new landing_page_slideshow("../assets/vid/3d_printed_plane/", ["mayden.mp4", "ground_cam_1.mp4", "plane_cam_1.mp4", "landing_1.mp4"], "plane_3d_printed_vid_1", "plane_3d_printed_vid_2");
-
-// Slide show objects
-const plane_3d_printed_overview_ss = new photo_slideshow("plane_3d_printed_ss")
