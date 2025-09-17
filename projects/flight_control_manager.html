@@ -49,9 +49,10 @@
                 <div class="col-lg-6 col-md-10 p-4">
                     <h2 class="mb-4">Project Overview</h2>
                     <p class="text-white-50" style="font-size: 20px;">
-                    This UAV was developed to test additive manufacturing techniques for UAVs, develop modular components that can be serviced/replaced, and refine my UAV design process.
-                    The primary motivation for this project was to construct test, assess, and adjust design/manufacturing/testing processes to create an ideal workflow for creating robust UAVs to 
-                    meet design requirements.
+                    This flight controller was developed to help me gain a better understanding of the fundamentals of flight control hardware and firmware.
+                    The flight controller was specifically targeted towards fixed-wing UAV platforms with the goal of full autonomous flight capability. I
+                    designed the flight controller hardware my freshmen year of college and developed the firmware for the flight controller as part of an 
+                    independent study for my senior year.
                     </p>
                 </div>
 
@@ -105,10 +106,12 @@
                 <div class="col-lg-6 col-md-10 p-4">
                     <h4 class="mb-4 text-white-100">Find Open-Source Reference Designs</h4>
                     <p class="text-white-50" style="font-size: 20px;">
-                    The preliminary airframe geometry was designed in OpenVSP based on initial specifications
-                    (wingspan, wing placement, tail configuration, etc). The geometry was adjusted based on 
-                    VSPAERO simulation results to make the airframe stable, maximize L/D ratio, and achieve
-                    other desireable flight characteristics.
+                    The first step of development was to find a reference design that would introduce me to the basics
+                    of PCB flight controller design. Given that I started this design before I had taken any electrical 
+                    engineering classes, I was primarily working based off of experience with an Arduino based flight 
+                    data recorder project and off-the-shelf flight controllers. I utilized basic design elements from 
+                    the reference design (HADES Flight Control System) and modified them to fit into the scope of the 
+                    planned capabilites of my flight controller.
                     </p>
                 </div>
             </div>
@@ -122,10 +125,9 @@
                 <div class="col-lg-6 col-md-10 p-4">
                     <h4 class="mb-4 text-white-100">Choose a Microcontroller, Sensors, Regulators, etc. Based on Specs</h4>
                     <p class="text-white-50" style="font-size: 20px;">
-                    The OpenVSP geometry was simulated using VSPAERO under expected flight conditions for the
-                    airfield that would be used for testing. Alpha and Beta (aka pitch and yaw) were varied through
-                    testing to find a stable configuration and generate aerodynamic coefficient graphs over the range
-                    of flight conditions.
+                    After coming up with an initial architecture for the flight controller, ICs were chosen based on desired specs
+                    and availability (this design was created in 2022 when many ICs were back ordered due to shortages). The JLCPCB 
+                    assembly parts library was used to source parts to allow for JLC to both manufacture the PCB and assemble it. 
                     </p>
                 </div>
             </div>
@@ -139,9 +141,10 @@
                 <div class="col-lg-6 col-md-10 p-4">
                     <h4 class="mb-4 text-white-100">Create Electronic Schematic</h4>
                     <p class="text-white-50" style="font-size: 20px;">
-                    Using data aquired from the airframe characterization and typical design specification for similar
-                    sized UAVs off-the-shelf parts for the airframe, power plant, surface actuators were sourced. Off-the-shelf
-                    parts were used wherever possible to minimize the number of custom parts designed.
+                    Once all the non-passive ICs had been chosen, an electronic schematic was created in EasyEDA (EasyEDA was chosen because
+                    this project was being done as a project under my company and EasyEDA was free). The configuration of passive components
+                    was based on design methodology used in the reference design (HADES Flight Control System) as well as other open-source
+                    PCB projects.
                     </p>
                 </div>
             </div>
@@ -155,9 +158,9 @@
                 <div class="col-lg-6 col-md-10 p-4">
                     <h4 class="mb-4 text-white-100">Create PCB Design</h4>
                     <p class="text-white-50" style="font-size: 20px;">
-                    Both custom and off-the-shelf parts were modeled in Autodesk Fusion 360 to allow for the creation
-                    of a full airframe assembly in Fusion 360. Custom parts were modeled to allow for PLA/TPU additive manufacturing
-                    and their associated masses were estimated using Fusion 360.
+                    The schematic was used to generate all the components and connections in the EasyEDA PCB designer tool. Trace widths
+                    and routes were manually created in the designer using educational PCB design resources for guildance. A two-layer 
+                    board layout was chosen as the board size could be larger for testing and to minimize manufacturing cost.
                     </p>
                 </div>
             </div>
@@ -171,10 +174,9 @@
                 <div class="col-lg-6 col-md-10 p-4">
                     <h4 class="mb-4 text-white-100">Order PCB from JLCPCB</h4>
                     <p class="text-white-50" style="font-size: 20px;">
-                    Using the parts modeled in Fusion 360, sub-assemblies and the full airframe assembly was modeled.
-                    The full airframe assembly allowed for the estimation of the total mass and location of the center of mass.
-                    Necessary adjustments were made to fix any part conflicts and adjust location of the center of mass to match
-                    the OpenVSP geometry.
+                    Gerber files were generated from the EasyEDA PCB designer tool and sent to JLCPCB for manufacturing. JLCPCB checked 
+                    the gerber files for any large design errors, created the PCB, ran a flying probe test electrical test, and used ICs 
+                    from their warehouse to assemble to board. The board was then packaged and shipped.
                     </p>
                 </div>
             </div>
@@ -188,9 +190,10 @@
                 <div class="col-lg-6 col-md-10 p-4">
                     <h4 class="mb-4 text-white-100">Test PCB Functionality</h4>
                     <p class="text-white-50" style="font-size: 20px;">
-                    Custom parts were exported to stl, sliced in Bambu Studio, and manufactured using a Bambu P1S 3D printer.
-                    Parts that needed rigid characteristics were printed using PLA and parts that needed flexible characteristics
-                    were printed using TPU.
+                    After recieving the board, STM32CubeIDE was used to set up a basic test script to check for proper functionality of
+                    the microcontroller and on-board sensor ICs. Power was also supplied to all on-board regulators to check for voltage
+                    stability under expected loads. After the hardware was checked for proper functionality, the flight controller was
+                    set aside until the beginning of the firware developement which started my senior year.
                     </p>
                 </div>
             </div>
@@ -204,9 +207,11 @@
                 <div class="col-lg-6 col-md-10 p-4">
                     <h4 class="mb-4 text-white-100">Develop Flight Controller Firmware for Raw Data Collection</h4>
                     <p class="text-white-50" style="font-size: 20px;">
-                    Once all parts had been sourced and manufactured the airframe was assembled and electronics were integrated.
-                    Necessary part modification were made to ensure proper assembly. The airframe was then weighed to determine
-                    final mass and the CG location was estimated using balancing.
+                    After taking classes going over embedded systems, digital signal processing, modern control systems, etc. I felt that
+                    I gained the necessary background knowledge to develop the firmware for the flight controller as part of an independent 
+                    study. The initial firmware that developed was purely for collecting raw sensor measurements and recording them to a micro-SD
+                    card. These measurements recordings would be imported to MATLAB for easier developement of filtering algorithms and control
+                    loops.
                     </p>
                 </div>
             </div>
@@ -220,10 +225,9 @@
                 <div class="col-lg-6 col-md-10 p-4">
                     <h4 class="mb-4 text-white-100">Collect Real World Flight Data</h4>
                     <p class="text-white-50" style="font-size: 20px;">
-                    After the final assembly of the airframe was complete the electronic subsystems were tested to ensure proper
-                    operation. Calibrations to control surface actuators were made to adjust control surface throws to be within
-                    desired specifications. The motor was run at full throttle with the propeller installed to test for excessive
-                    airframe vibrations.
+                    The flight controller with the flight data recording firmware uploaded was mounted inside the 3D Printed Test Plane for data collection.
+                    Flight tests were conducted at a model airfield with the flight controller constantly collecting sensor data and storing it to an
+                    on-board micro-SD card. This testing resulted in 10 sets of flight data that could be analyzed in MATLAB.
                     </p>
                 </div>
             </div>
@@ -232,15 +236,15 @@
         <div class="container">
             <div class="row w-100 align-items-center justify-content-center">
                 <div class="slideshow-container col-lg-6 col-md-10">
-                    <img src="../assets/img/flight_control_manager/flight_control_manager_raw_data.png" class="img-round" style="width:100%">
+                    <img src="../assets/img/flight_control_manager/flight_control_manager_MATLAB_filtering.png" class="img-round" style="width:100%">
                 </div>
                 <div class="col-lg-6 col-md-10 p-4">
                     <h4 class="mb-4 text-white-100">Develop Filtering Algorithms to Process Raw Flight Data in MATLAB</h4>
                     <p class="text-white-50" style="font-size: 20px;">
-                    Finally the UAV was taken to a model airfield for a mayden test flight and further testing of aircraft flight
-                    dynamics. The LEC Innovations Flight Command Manager V1 was installed to gather raw flight data to determine
-                    actual flight characteristics. Small design changes were made and implemented based on issues found during flight
-                    testing.
+                    The 10 sets of flight data was formatted and imported to MATLAB for analysis and development of filtering algorithms. 
+                    Research was conducted to determine typical filters used to remove noise from raw sensor measurements and to transform
+                    raw sensor measurements into useful measurements for automated control. These filters were implemented in MATLAB and 
+                    tested on the imported flight data.
                     </p>
                 </div>
             </div>
@@ -254,10 +258,9 @@
                 <div class="col-lg-6 col-md-10 p-4">
                     <h4 class="mb-4 text-white-100">Develop and Simulate Flight Control Models in MATLAB</h4>
                     <p class="text-white-50" style="font-size: 20px;">
-                    Finally the UAV was taken to a model airfield for a mayden test flight and further testing of aircraft flight
-                    dynamics. The LEC Innovations Flight Command Manager V1 was installed to gather raw flight data to determine
-                    actual flight characteristics. Small design changes were made and implemented based on issues found during flight
-                    testing.
+                    After developing the primary measurement filtering algorithms, research was conducted into state-space control models
+                    used in fixed-wing aircraft control systems. Simulink was ultilized to create control loops for a 3 degree of freedom
+                    altitude controller using the output of the primary measurement filtering algorithms as the input to the control loop.
                     </p>
                 </div>
             </div>
@@ -271,23 +274,26 @@
                 <div class="col-lg-6 col-md-10 p-4">
                     <h2 class="mb-4">Results</h2>
                     <ul  class="text-white-50" style="font-size: 20px;">
-                        <li>Pitch and Yaw Stability Confirmed</li>
-                        <li>Autonomous Flight Control Capabilities Confirmed</li>
-                        <li>Glider Reuseablity Confirmed</li>
+                        <li>Flight Control Manager Hardware Functionality Confirmed</li>
+                        <li>Primary Filtering Algorithms Developed</li>
+                        <li>Initial State-Space Controllers Modeled</li>
                     </ul>
                     <p class="text-white-50" style="font-size: 20px;">
-                    Real world flight testing proved that the airframe demonstrated flight characteristics that matched
-                    simulation predictions within a reasonable margin. This proved that the validity of the geometry and
-                    simulation portions of the design process. Though the aircraft flew and was stable, the high airspeed 
-                    combined with the high inertia of airframe (compared to similar sized UAVs) made the UAV releatively 
-                    difficult to pilot. While improvements could certainly be made to the airframe, the overall project 
-                    successfully achieved the primary goal of integrating additive manufacturing into UAV production and
-                    validated a baseline design process.
+                    The developement of the Flight Control Manager V1 helped create a flight controller architure that could be refined through
+                    future iterations. Despite the full autonomous flight functionality not be realized in the span of the project,
+                    it still resulted in a strong foundation for a flight controller that could be capable of autonomous flight in the future.
+                    This project helped develop a useful workflow for developing hardware and firmware for an embedded systems solution to 
+                    an electrical engineering problem.
                     </p>
                 </div>
 
                 <div class="slideshow-container col-lg-6 col-md-10">
-                    <iframe width="800" height="450" src="https://www.youtube.com/embed/mIT6UmsM6zI?si=wKOfdO39EW7CArCy" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                    <a href="../assets/pdf/flight_control_manager/Unmanned_Aerial_Vehicle_Autopilot_Firmware_Design_and_Implementation-Luca_Ciancanelli-EENG499.pdf" target="_blank">
+                        <img src="../assets/img/flight_control_manager/flight_control_manager_paper.jpg" 
+                            alt="Research Paper Preview" 
+                            style="border:0; cursor:pointer; object-fit:cover;">
+                    </a>
+                    <p class="text-white-50" style="font-size: 20px;">(Click Image to View Full Paper)</p>
                 </div>
             </div>
         </div>
@@ -298,11 +304,11 @@
     <div class="container text-center">
         <h2 class="mb-5 text-white-100">Impact & Next Steps</h2>
         <p class="lead text-white-50">
-        This project helped me develop an understanding of the full design process for UAVs from napkin sketches to a
-        flying aircraft. It also helped me develop forward thinking manufacturing techniques that provide advantages
-        over more traditional manufacturing processes. There aren't any current plans to revise the airframe as the 
-        primary goal of this project was to gain knowledge of UAV and general aerospace engineering. Aspects of the 
-        design process in this project are planned to be used in future UAV projects.
+        I learned a tremendous amount about the fundamentals of hardware, firmware, filtering, and control loop 
+        through the development through this project. This project served as a great foundation for developing 
+        applicable aerospace engineering skills. Currently I am developing a second version of the flight control manager
+        that addresses issues found in the previous design and extends the capability of the on-board hardware. The 
+        goal for the second version of the flight control manager is to demonstrate real world autonomous flight capablity. 
         </p>
     </div>
     </section>
