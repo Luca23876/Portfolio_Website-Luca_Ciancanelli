@@ -31,10 +31,12 @@
     </nav>
 
     <!-- Project Header-->
-    <header class="video-header">
+    <header class="video-header" style="background-image: url('../assets/img/autonomous_glider/ag_bg.jpg'); background-repeat: no-repeat; background-size: 100% 100%;">
         <div class="video-container">
-            <video id="autonomous_uav_vid_1" onended="autonomous_glider_lp.play_next_video()" autoplay muted playsinline></video>
-            <video id="autonomous_uav_vid_2" onended="autonomous_glider_lp.play_next_video()" autoplay muted playsinline></video>
+            <!-- Video background - needs Cloudflare streaming -->
+            <!-- <video id="autonomous_uav_vid_1" onended="autonomous_glider_lp.play_next_video()" autoplay muted playsinline></video>
+            <video id="autonomous_uav_vid_2" onended="autonomous_glider_lp.play_next_video()" autoplay muted playsinline></video> -->
+            
             <div class="header-overlay">
                 <h1 class="text-white font-weight-bold">X-1 Autonomous Glider UAV</h1>
                 <p>AIAA Design Build Fly Competition Autonomous Glider</p>
@@ -279,9 +281,11 @@
     <!-- Core theme JS-->
     <script src="../js/scripts.js"></script>
 
+    <!-- Custom JS scripts -->
     <script>
-        const autonomous_glider_lp = new landing_page_slideshow("../assets/vid/autonomous_glider/", ["mothership_takeoff.mp4", "deployment_plane_cam.mp4", "deployment_ground_cam_1.mp4", "deployment_ground_cam_2     .mp4"], "autonomous_uav_vid_1", "autonomous_uav_vid_2");
         const autonomous_glider_overview_ss = new photo_slideshow("autonomous_glider_ss");
     </script>
+
+    <!-- const autonomous_glider_lp = new landing_page_slideshow("../assets/vid/autonomous_glider/", ["mothership_takeoff.mp4", "deployment_plane_cam.mp4", "deployment_ground_cam_1.mp4", "deployment_ground_cam_2     .mp4"], "autonomous_uav_vid_1", "autonomous_uav_vid_2"); -->
 </body>
 </html>
